@@ -27,3 +27,8 @@ async def update_movie(id: int, payload: MovieIn):
         .values(**payload.model_dump())
     )
     return await database.execute(query=query)
+
+async def get_movie_count() -> int:
+    query = "SELECT COUNT(*) FROM movies"  
+    result = await database.fetch_one(query)
+    return result[0]  

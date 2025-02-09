@@ -40,3 +40,8 @@ async def delete_movie(id: int):
     if not movie:
         raise HTTPException(status_code=404, detail="Movie not found")
     return await db_manager.delete_movie(id)
+
+@movies.get('/count', response_model=int)
+async def count_movies():
+    count = await db_manager.get_movie_count()
+    return count
