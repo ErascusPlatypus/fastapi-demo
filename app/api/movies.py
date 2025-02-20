@@ -11,6 +11,7 @@ movies = APIRouter()
 async def index():
     return await db_manager.get_all_movies()
 
+
 @movies.post('/', status_code=201)
 async def add_movie(payload: MovieIn):
     movie_id = await db_manager.add_movie(payload)

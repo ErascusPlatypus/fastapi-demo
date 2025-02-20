@@ -12,10 +12,10 @@ async def get_all_movies():
     return await database.fetch_all(query=query)
 
 async def get_movie(id):
-    query = movies.select(movies.c.id==id)
+    query = movies.select().where(movies.c.id==id)
     return await database.fetch_one(query=query)
 
-async def delete_movie(id: int):
+async def delete_movie(id):
     query = movies.delete().where(movies.c.id==id)
     return await database.execute(query=query)
 
